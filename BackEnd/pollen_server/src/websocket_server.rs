@@ -21,13 +21,14 @@ pub struct Server {
     pub count: Rc<Cell<u32>>,
     pub msg_count : Rc<Cell<i64>>,
     pub messages_list : Rc<RefCell<Vec<user_message>>>,
+    pub user_name : String
 }
 
 impl Handler for Server {
 
     fn on_open(&mut self, _: Handshake) -> Result<()> {
         // We have a new connection, so we increment the connection counter
-        println!("A new host joined.",);
+        println!("A new host joined.");
         self.count.set(self.count.get() + 1);
         println!("The number of live connections is {}", self.count.get());
         Ok(())
@@ -43,6 +44,9 @@ impl Handler for Server {
         println!("system message type : {:?} data: {}", res.msg_type, res.data);
 
         if res.msg_type == system_message_type::Login{
+            //assigning the name of this connection
+            self.user_name = res.data;
+
             //sending back all messages to a loging user
             let msg_list = json!({
                 "type" : "all_messages",
@@ -58,8 +62,9 @@ impl Handler for Server {
             //computing timestamp
             let time_now = SystemTime::now();
             let timestamp = time_now.duration_since(UNIX_EPOCH).expect("time should be positive");
+            let timestamp_in_ms = timestamp.as_secs() *1000+ timestamp.subsec_nanos() as u64 / 1_000_000;
 
-            let u_msg = user_message{ id : new_id, author : "none".to_owned(), text : res.data, time : timestamp.as_secs()};
+            let u_msg = user_message{ id : new_id, author : self.user_name.clone(), text : res.data, time : timestamp_in_ms};
 
             let response = json!({
                 "type" : "message",

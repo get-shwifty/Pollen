@@ -43,7 +43,8 @@ fn main() {
   	count: count.clone(), 
   	msg_count : message_count.clone(), 
   	messages_list : 
-  	messages_list.clone()} 
+  	messages_list.clone(),
+  	user_name : "None".to_owned()} 
   }).unwrap()
 } 
 
