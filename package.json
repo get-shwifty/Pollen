@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "reselect": "^3.0.1"
+  }
+}
