@@ -5,17 +5,23 @@
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const ADD_TAG = 'ADD_TAG';
 
-export function sendMessage( message, author=null ){
-    return async function(dispatch, getState){
+export const sendMessage = ( message, author=null ) => {
+    return async function( dispatch ){
         dispatch({
             type: SEND_MESSAGE,
             message: message,
             author: author
         });
     }
-}
+};
 
-export function addTag( message_id ){
-
-}
+export const addTag = ( messageId, tag ) => {
+    return async function( dispatch ){
+        dispatch({
+            type: ADD_TAG,
+            tag: tag,
+            message: messageId
+        })
+    }
+};
 
