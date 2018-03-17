@@ -13,6 +13,8 @@ use messages::{user_message,system_message_type, system_message};
 
 use json_parser;
 
+use std::time::{SystemTime, UNIX_EPOCH};
+
 //server
 pub struct Server {
     pub out: Sender,
@@ -53,10 +55,11 @@ impl Handler for Server {
             self.msg_count.set(self.msg_count.get()+1);
             let new_id = self.msg_count.get();
             
-            //let new_id = self.msg_count.set();
+            //computing timestamp
+            let time_now = SystemTime::now();
+            let timestamp = time_now.duration_since(UNIX_EPOCH).expect("time should be positive");
 
-           // new_id.set( new_id.deref()+1);
-            let u_msg = user_message{ id : new_id, author : "none".to_owned(), text : res.data, timestamp : 0};
+            let u_msg = user_message{ id : new_id, author : "none".to_owned(), text : res.data, time : timestamp.as_secs()};
 
             let response = json!({
                 "type" : "message",

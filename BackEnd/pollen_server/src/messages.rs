@@ -20,7 +20,7 @@ pub struct user_message{
 	pub id : i64,
 	pub author : String,
 	pub text : String,
-	pub timestamp : i64
+	pub time : u64
 }
 
 #[derive(Clone)]

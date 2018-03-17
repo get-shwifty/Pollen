@@ -32,7 +32,7 @@ fn main() {
   //json_parser::typed_example();
 
   let mut messages_list = Rc::new(RefCell::new(Vec::new()));
-  messages_list.borrow_mut().push(user_message{ id : 0i64, author : "system".to_owned(), text: "Welcome to Pollen".to_owned(), timestamp : 0 });
+  messages_list.borrow_mut().push(user_message{ id : 0i64, author : "system".to_owned(), text: "Welcome to Pollen".to_owned(), time : 0 });
 
   let count = Rc::new(Cell::new(0));
   let message_count : Rc<Cell<i64>> = Rc::new(Cell::new(1));
