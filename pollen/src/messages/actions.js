@@ -21,13 +21,12 @@ export const sendMessage = ( message, author=null ) => {
         const res = {
             id: messageIdCounter++,
             message,
-            author
+            author,
+            date: new Date()
         };
         dispatch({
             type: SEND_MESSAGE_SUCCESS,
-            id: res.id,
-            message: res.message,
-            author: res.author
+            message: res
         });
     }
 };

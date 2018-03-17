@@ -3,16 +3,18 @@
  */
 
 import { connect } from 'react-redux'
-import { messageArraySelector } from '../selectors'
+import { sendMessage } from '../actions'
 
 const mapStateToProps = state => {
     return {
-        messages: messageArraySelector(state)
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        sendMessage( message ){
+            dispatch( sendMessage( message ) )
+        }
     }
 };
 

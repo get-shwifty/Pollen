@@ -10,7 +10,7 @@ const byId = ( state = {}, action ) => {
         case SEND_MESSAGE_SUCCESS:
             return {
                 ...state,
-                [ action.id ] : { id: action.id, message: action.message, author: action.author}
+                [ action.message.id ] : { ...action.message }
             };
         default:
             return state;
@@ -20,6 +20,7 @@ const byId = ( state = {}, action ) => {
 const messages = ( state = [], action ) => {
     switch ( action.type ){
         case SEND_MESSAGE_SUCCESS:
+
             return [...state, action.id];
 
         default:
