@@ -19,6 +19,9 @@ class Input extends Component{
             case 'Enter':
                 this.props.sendMessage(this.state.message);
                 this.setState({message: ""});
+                break;
+            default:
+                break;
         }
     };
     render(){

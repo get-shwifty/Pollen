@@ -11,7 +11,9 @@ class Messages extends Component{
     render(){
         const createMessage = id => {
             return(
-                <Message id={id}/>
+                <div key={id} >
+                    <Message id={id}/>
+                </div>
             )
         };
         return(

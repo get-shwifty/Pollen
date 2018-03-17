@@ -13,8 +13,6 @@ const byId = state => state.messages.byId;
 export const messageArraySelector = createSelector(
     byId,
     function ( byId ) {
-        let temp = _(byId).values().sortBy('date').map( m => m.id ).value();
-        console.log(temp);
-        return temp;
+        return _(byId).values().sortBy('time').map('id').value();
     }
 );

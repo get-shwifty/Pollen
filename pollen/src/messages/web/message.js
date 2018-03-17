@@ -9,8 +9,8 @@ class Message extends Component{
 
   render(){
     return(
-        <div className="message">
-            { this.props.message.author || "" } : { this.props.message.message }
+        <div className="message" >
+            { this.props.author || "" } : { this.props.text } (at { this.props.time })
             <br/>
         </div>
     );

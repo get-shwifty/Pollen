@@ -8,6 +8,14 @@ import Input from './messages/web/input';
 import './App.css';
 
 const rootReducer = combineReducers({
+    wss: ( state = null, action ) => {
+        switch( action.type ){
+            case 'SET_WSS':
+                return action.wss;
+            default:
+                return state;
+        }
+    },
     messages
 });
 

@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        message: state.messages.byId[ ownProps.id ]
+        ...state.messages.byId[ ownProps.id ]
     }
 };
 
