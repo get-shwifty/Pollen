@@ -1,0 +1,6 @@
+[package]
+name = "pollen_server"
+version = "0.1.0"
+authors = ["KerDelos <damien.delmas@etu.utc.fr>"]
+
+[dependencies]
