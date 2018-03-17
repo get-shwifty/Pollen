@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { combineReducers,createStore,applyMiddleware,compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-
-const rootReducer = combineReducers({
-
-});
 
 class Root extends Component {
 
@@ -19,7 +15,7 @@ class Root extends Component {
         const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
         return createStore(
-            rootReducer,
+            this.props.rootReducer,
             {},
             composeEnhancers(
                 applyMiddleware(thunk)

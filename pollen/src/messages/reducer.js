@@ -11,6 +11,12 @@ const byId = ( state = {}, action ) => {
             return {
                 ...state,
                 [ action.id ] : { id: action.id, message: action.message, author: action.author}
-            }
+            };
+        default:
+            return state;
     }
 };
+
+export default combineReducers({
+    byId
+});
