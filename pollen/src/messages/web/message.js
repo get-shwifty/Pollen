@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import Container from '../containers/message';
+import InputTag from '../../tags/web/inputMessageTags';
 
 class Message extends Component{
 
@@ -12,6 +13,7 @@ class Message extends Component{
         <div className="message" >
             { this.props.author || "" } : { this.props.text } (at { this.props.time })
             <br/>
+            Ajouter un tag: <InputTag messageId={this.props.id}/>
         </div>
     );
   }

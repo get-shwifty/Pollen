@@ -3,6 +3,7 @@ import { combineReducers } from "redux";
 import Root from './Root';
 
 import messages from './messages/reducers';
+import tags from './tags/reducers';
 import Messages from './messages/web/messages';
 import Input from './messages/web/input';
 import './App.css';
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
                 return state;
         }
     },
-    messages
+    messages,
+    tags
 });
 
 class App extends Component {
