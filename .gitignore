@@ -1,2 +1,4 @@
 BackEnd/pollen_server/target/*
+BackEnd/pollen_server/bdd/*
 .idea
+*.out
