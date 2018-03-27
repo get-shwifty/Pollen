@@ -15,13 +15,17 @@ use json_parser;
 
 use std::time::{SystemTime, UNIX_EPOCH};
 
+use bdd_wrapper;
+
+use rusqlite;
+
 //server
 pub struct Server {
     pub out: Sender,
     pub count: Rc<Cell<u32>>,
-    pub msg_count : Rc<Cell<i64>>,
     pub messages_list : Rc<RefCell<Vec<user_message>>>,
-    pub user_name : String
+    pub user_name : String,
+    pub bdd_conn : Rc<RefCell<rusqlite::Connection>>,
 }
 
 impl Handler for Server {
@@ -56,15 +60,17 @@ impl Handler for Server {
         }
         else if res.msg_type == system_message_type::MessageRequest{
             //broadcast the new message we received
-            self.msg_count.set(self.msg_count.get()+1);
-            let new_id = self.msg_count.get();
             
             //computing timestamp
             let time_now = SystemTime::now();
             let timestamp = time_now.duration_since(UNIX_EPOCH).expect("time should be positive");
             let timestamp_in_ms = timestamp.as_secs() *1000+ timestamp.subsec_nanos() as u64 / 1_000_000;
 
-            let u_msg = user_message{ id : new_id, author : self.user_name.clone(), text : res.data, time : timestamp_in_ms};
+            let mut u_msg = user_message{ id : 0, author : self.user_name.clone(), text : res.data, time : timestamp_in_ms as i64};
+
+            let msg_id = bdd_wrapper::add_message_to_bdd(&mut  self.bdd_conn.borrow_mut(),& u_msg);
+
+            u_msg.id = msg_id;
 
             let response = json!({
                 "type" : "message",
