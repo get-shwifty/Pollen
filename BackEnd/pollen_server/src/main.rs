@@ -24,6 +24,7 @@ mod json_parser;
 mod websocket_server;
 mod messages;
 mod bdd_wrapper;
+mod config_helper;
 
 use messages::user_message;
 
@@ -43,7 +44,10 @@ fn run_server(){
 
 	let mut bdd_conn = Rc::new(RefCell::new(bdd));
 
-  	ws::listen("188.213.31.63:3012", |out| { websocket_server::Server { 
+	//load configuration file
+	let config = config_helper::Config::load_from_file("../config_pollen_server.json");
+
+  	ws::listen(config.get_full_ip(), |out| { websocket_server::Server { 
   		out: out, 
   		count: count.clone(), 
   		messages_list : 
