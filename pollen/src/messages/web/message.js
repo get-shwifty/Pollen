@@ -11,8 +11,7 @@ class Message extends Component{
   render(){
     return(
         <div className="message" >
-            { this.props.author || "" } : { this.props.text } (at { this.props.time })
-            <br/>
+            { this.props.author || "" }  dit : { this.props.text } {/*(at { this.props.time })*/ }
             Ajouter un tag: <InputTag messageId={this.props.id}/>
         </div>
     );

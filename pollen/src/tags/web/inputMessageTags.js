@@ -26,7 +26,7 @@ class InputTag extends Component{
     };
     render(){
         return(
-            <div className="inputBar">
+            <div className="inputTag" style={{display:'inline-block'}}>
                 <input type="text" value={this.state.tag} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
             </div>
         );

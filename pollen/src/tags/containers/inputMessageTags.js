@@ -5,11 +5,11 @@
 import { connect } from 'react-redux'
 import { addTag } from '../actions'
 
-// const mapStateToProps = ownProps => {
-//     return {
-//
-//     }
-// };
+const mapStateToProps = state => {
+    return {
+
+    }
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -20,6 +20,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-    // mapStateToProps,
+    mapStateToProps,
     mapDispatchToProps
 );

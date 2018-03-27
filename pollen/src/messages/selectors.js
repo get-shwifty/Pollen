@@ -5,14 +5,15 @@
 import { createSelector } from 'reselect'
 import * as _ from 'lodash'
 
-const byId = state => state.messages.byId;
+const messagesById = state => state.messages.byId;
+const tagsById = state => state.tags.byId;
 
 /**
  * Sélecteur pour récupérer les tâches sous forme de tableau
  */
 export const messageArraySelector = createSelector(
-    byId,
-    function ( byId ) {
-        return _(byId).values().sortBy('time').map('id').value();
+    messagesById,
+    function ( messagesById ) {
+        return _(messagesById).values().sortBy('time').map('id').value();
     }
 );

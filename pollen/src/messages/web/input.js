@@ -26,8 +26,8 @@ class Input extends Component{
     };
     render(){
         return(
-            <div className="inputBar">
-                <input type="text" value={this.state.message} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
+            <div className="row">
+                <input className="inputMessage" placeholder="Entrez votre message" type="text" value={this.state.message} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
             </div>
         );
     }

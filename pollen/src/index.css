@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.inputMessage{
+  border: 0;
+  background: #FFEB3B;
+  width: 100%;
+  padding-left: 1em;
+  position: fixed;
+  height: 40px;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+}
+
+.messages{
+  max-height: calc(100% - 50px);
+  height: calc(100% - 50px);
+  overflow: hidden;
+}
