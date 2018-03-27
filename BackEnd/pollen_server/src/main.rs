@@ -43,7 +43,7 @@ fn run_server(){
 
 	let mut bdd_conn = Rc::new(RefCell::new(bdd));
 
-  	ws::listen("localhost:3012", |out| { websocket_server::Server { 
+  	ws::listen("188.213.31.63:3012", |out| { websocket_server::Server { 
   		out: out, 
   		count: count.clone(), 
   		messages_list : 

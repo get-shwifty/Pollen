@@ -1,4 +1,3 @@
-
 export default class Wss {
 
     /**
@@ -6,7 +5,7 @@ export default class Wss {
      */
     ws;
 
-    ip = 'ws://192.168.43.05:3012';
+    ip = 'ws://188.213.31.63:3012';
 
     static READY_STATE_MAP = {
         0: 'CONNECTING',
